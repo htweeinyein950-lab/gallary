@@ -1,24 +1,211 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <style>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        </style>
+<title>Gallery</title>
 
-    </head>
-    <body>
-        <header>
-            <h1>My Gallary</h1>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
-        </header>
-        <main>
-            <img src="nature.jpg">
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
 
-        </main>
-        <footer>
+/* VARIABLES */
+:root {
+  --bg-light: rgb(242,229,229);
+  --text-light: rgb(99,113,127);
+  --header-light: rgb(204,223,225);
+  --btn-light: rgb(173,211,232);
+  --btn-hover-light: gray;
 
-        </footer>
-        
-    </body>
+  --bg-dark: #1e1e1e;
+  --text-dark: #eee;
+  --header-dark: #2c2c2c;
+  --btn-dark: #444;
+  --btn-hover-dark: #666;
+}
 
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:"Oswald", sans-serif;
+  background:var(--bg-light);
+  color:var(--text-light);
+}
+
+/* HEADER */
+header{
+  background:var(--header-light);
+}
+
+.header-box{
+  max-width:1200px;
+  margin:auto;
+  padding:1.5rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+h1{
+  font-size:2rem;
+  display:flex;
+  gap:0.5rem;
+  margin-bottom:1rem;
+}
+
+/* SEARCH */
+.header-search{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin-bottom:1rem;
+}
+
+#search{
+  padding:0.5rem 1rem;
+  border-radius:20px;
+  border:1px solid #ccc;
+}
+
+/* TOGGLE */
+#dark-toggle{
+  display:none;
+}
+
+.toggle-label{
+  font-size:1.5rem;
+  cursor:pointer;
+}
+
+/* NAV */
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:1rem;
+  justify-content:center;
+}
+
+.nav-btn{
+  padding:0.5rem 1rem;
+  border:none;
+  border-radius:20px;
+  background:var(--btn-light);
+  display:flex;
+  gap:0.3rem;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.nav-btn:hover{
+  background:var(--btn-hover-light);
+  color:white;
+  transform:translateY(-2px);
+}
+
+.nav-btn.active{
+  background:black;
+  color:white;
+}
+
+/* 📱 MOBILE */
+@media(max-width:768px){
+  nav ul{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .nav-btn{
+    width:220px;
+    justify-content:center;
+  }
+}
+
+/* ================= */
+/* 🌙 DARK MODE */
+/* ================= */
+
+#dark-toggle:checked ~ header{
+  background:var(--header-dark);
+  color:var(--text-dark);
+}
+
+#dark-toggle:checked ~ header .nav-btn{
+  background:var(--btn-dark);
+  color:white;
+}
+
+#dark-toggle:checked ~ header .nav-btn:hover{
+  background:var(--btn-hover-dark);
+}
+
+#dark-toggle:checked ~ header #search{
+  background:#333;
+  color:white;
+  border:1px solid #555;
+}
+</style>
+</head>
+
+<body>
+
+<!-- checkbox -->
+<input type="checkbox" id="dark-toggle">
+
+<header>
+  <div class="header-box">
+
+    <h1>
+      <i class="fa-solid fa-heart"></i>
+      My Portfolio
+    </h1>
+
+    <div class="header-search">
+      <input type="text" placeholder="Search projects..." id="search">
+
+      <!-- toggle -->
+      <label for="dark-toggle" class="toggle-label">
+        <i class="fa-solid fa-moon"></i>
+      </label>
+    </div>
+
+    <nav>
+      <ul>
+        <li>
+          <button class="nav-btn active">
+            <i class="fa-solid fa-table"></i> All
+          </button>
+        </li>
+
+        <li>
+          <button class="nav-btn">
+            <i class="fa-solid fa-laptop-code"></i> Web Design
+          </button>
+        </li>
+
+        <li>
+          <button class="nav-btn">
+            <i class="fa-solid fa-palette"></i> Graphic Design
+          </button>
+        </li>
+
+        <li>
+          <button class="nav-btn">
+            <i class="fa-solid fa-camera"></i> Photography
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+</body>
 </html>
